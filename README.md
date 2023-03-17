@@ -17,3 +17,5 @@ This repository is a boilerplate that comes with the default setup of
 - Prettier
 - Emotion
 - TypeDoc
+- Axios
+- React-query
