@@ -5,8 +5,8 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:react/recommended',
     'airbnb',
+    'plugin:@next/next/recommended',
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
@@ -17,21 +17,28 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'plugin:import/recommended'],
+  plugins: ['react', '@typescript-eslint', 'import', 'prettier'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'react/no-array-index-key': 'off',
   },
   settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        paths: ['./src'],
-      },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
-  },
-  alias: {
-    map: [['@', './src']],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    'import/resolver': {
+      typescript: {},
+    },
   },
 };
